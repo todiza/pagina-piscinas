@@ -2,8 +2,9 @@
 
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/pagination";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -38,7 +39,7 @@ export default function Reviews() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    gsap.from(".review-card", {
+    gsap.from(".reviews-swiper-wrapper", {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 75%",
@@ -46,42 +47,53 @@ export default function Reviews() {
       y: 40,
       opacity: 0,
       duration: 0.8,
-      stagger: 0.2,
       ease: "power2.out",
     });
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} id="reviews" className="py-24 bg-white overflow-hidden">
+    <section ref={sectionRef} id="reviews" className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <h2 className="text-[clamp(60px,8vw,130px)] font-bold text-foreground leading-none mb-16 text-center uppercase">
+        <h2 className="text-[clamp(40px,6vw,90px)] font-bold text-foreground leading-none mb-8 md:mb-16 text-center uppercase">
           Reseñas
         </h2>
 
-        <div className="flex flex-col gap-12 max-w-4xl mx-auto mb-24">
-          {reviews.map((review, i) => (
-            <div key={i} className="review-card flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left bg-black/5 p-8 border border-black/5 rounded-2xl">
-              <div className="shrink-0 relative">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
-                  <img src={review.image} alt={review.name} className="w-full h-full object-cover" />
+        <div className="reviews-swiper-wrapper max-w-4xl mx-auto mb-16 md:mb-24">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            className="w-full pb-12"
+          >
+            {reviews.map((review, i) => (
+              <SwiperSlide key={i}>
+                <div className="review-card flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left bg-black/5 p-6 md:p-8 border border-black/5 rounded-2xl mx-1 my-1">
+                  <div className="shrink-0 relative">
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                      <img src={review.image} alt={review.name} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 bg-accent text-white p-2 rounded-full shadow-md">
+                      <Quote size={14} />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-[clamp(20px,2.5vw,32px)] font-bold text-foreground uppercase leading-tight mb-2">
+                      "{review.title}"
+                    </h3>
+                    <p className="text-foreground/70 text-base md:text-lg mb-4 italic">
+                      {review.body}
+                    </p>
+                    <h6 className="text-xs md:text-sm font-bold text-foreground tracking-widest uppercase">
+                      {review.name}
+                    </h6>
+                  </div>
                 </div>
-                <div className="absolute -bottom-2 -right-2 bg-accent text-white p-2 rounded-full shadow-md">
-                  <Quote size={16} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-[clamp(24px,3vw,40px)] font-bold text-foreground uppercase leading-tight mb-2">
-                  "{review.title}"
-                </h3>
-                <p className="text-foreground/70 text-lg mb-4 italic">
-                  {review.body}
-                </p>
-                <h6 className="text-[15px] font-bold text-foreground tracking-widest uppercase">
-                  {review.name}
-                </h6>
-              </div>
-            </div>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         {/* Brand Logos Carousel */}

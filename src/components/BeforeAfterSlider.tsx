@@ -4,13 +4,13 @@ import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slide
 
 export default function BeforeAfterSlider() {
   return (
-    <section className="py-24 bg-white relative z-20">
+    <section className="py-12 md:py-24 bg-white relative z-20">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-[clamp(40px,6vw,80px)] font-bold text-foreground uppercase leading-tight">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
+          <h2 className="text-[clamp(32px,5vw,70px)] font-bold text-foreground uppercase leading-tight">
             Mira la diferencia
           </h2>
-          <p className="text-foreground/70 mt-4 text-lg">
+          <p className="text-foreground/70 mt-2 md:mt-4 text-base md:text-lg">
             Desliza para ver nuestras increíbles transformaciones de piscinas.
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function BeforeAfterSlider() {
                 alt="Piscina Después" 
               />
             }
-            className="h-[400px] md:h-[600px] w-full"
+            className="h-[250px] sm:h-[400px] md:h-[600px] w-full"
           />
         </div>
       </div>

@@ -41,9 +41,9 @@ export default function About() {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 bg-white overflow-hidden">
+    <section ref={sectionRef} id="about" className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           {/* Left Text Column */}
           <div className="about-content lg:w-1/2 pr-0 lg:pr-8">
             <span className="text-accent font-bold tracking-[0.3em] uppercase mb-4 block text-sm md:text-base">
@@ -52,19 +52,19 @@ export default function About() {
             <h2 className="text-[clamp(40px,6vw,80px)] font-extrabold text-foreground leading-[1.1] mb-6 uppercase">
               Nosotros
             </h2>
-            <h3 className="text-[clamp(20px,2.5vw,32px)] font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-8 uppercase leading-tight drop-shadow-sm">
+            <h3 className="text-[clamp(20px,2.5vw,32px)] font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-6 md:mb-8 uppercase leading-tight drop-shadow-sm">
               LOS MEJORES PROFESIONALES DEL MERCADO
             </h3>
-            <p className="text-foreground/70 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl font-medium">
+            <p className="text-foreground/70 text-base md:text-xl leading-relaxed mb-8 md:mb-10 max-w-2xl font-medium">
               Nos dedicamos a brindar servicios de piscinas de la más alta calidad. Desde diseños personalizados hasta mantenimiento semanal, nuestro equipo de expertos asegura que tu piscina esté siempre lista para un buen chapuzón. Nos enorgullece nuestra confiabilidad y la satisfacción de nuestros clientes.
             </p>
-            <Link href="/about" className="inline-block bg-primary text-white px-10 py-5 text-[15px] font-bold uppercase hover:bg-primary/90 transition-all tracking-widest shadow-lg hover:shadow-primary/50 hover:-translate-y-1 rounded-sm">
+            <Link href="/about" className="inline-block bg-primary text-white px-8 md:px-10 py-4 md:py-5 text-sm md:text-[15px] font-bold uppercase hover:bg-primary/90 transition-all tracking-widest shadow-lg hover:shadow-primary/50 hover:-translate-y-1 rounded-sm">
               MÁS INFORMACIÓN
             </Link>
           </div>
 
           {/* Right Image Slider Column */}
-          <div className="about-image lg:w-1/2 w-full h-[600px] relative mt-12 lg:mt-0 pl-0 lg:pl-8">
+          <div className="about-image lg:w-1/2 w-full h-[300px] sm:h-[450px] lg:h-[600px] relative mt-6 lg:mt-0 pl-0 lg:pl-8">
             <Swiper
               modules={[Autoplay, EffectFade]}
               effect="fade"

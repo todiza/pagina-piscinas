@@ -52,14 +52,14 @@ export default function Services() {
     <section 
       ref={sectionRef} 
       id="services" 
-      className="py-24 relative bg-cover bg-center bg-fixed"
+      className="py-12 md:py-24 relative bg-cover bg-center bg-fixed"
       style={{ backgroundImage: "url('/images/water_bg.png')" }}
     >
       {/* Overlay solid blue to match Astra */}
       <div className="absolute inset-0 bg-[#002251]/95" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center mb-16 text-center">
+        <div className="flex flex-col items-center mb-8 md:mb-16 text-center">
           <span className="text-accent font-bold tracking-[0.2em] uppercase mb-4 text-sm md:text-base">
             Lo Que Hacemos
           </span>
@@ -68,18 +68,19 @@ export default function Services() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {/* CSS Scroll Snap Container for mobile carousel, standard grid on desktop */}
+        <div className="flex md:grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto overflow-x-auto md:overflow-x-visible snap-x snap-mandatory pb-6 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {servicesList.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div key={index} className="service-card flex flex-col items-center text-center p-12 bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-lg">
-                <div className="w-24 h-24 bg-black/30 rounded-full flex items-center justify-center mb-6">
-                  <Icon className="w-10 h-10 text-accent" strokeWidth={2} />
+              <div key={index} className="service-card snap-center shrink-0 w-[80vw] sm:w-[450px] md:w-auto flex flex-col items-center text-center p-8 md:p-12 bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-lg">
+                <div className="w-20 h-20 md:w-24 md:h-24 bg-black/30 rounded-full flex items-center justify-center mb-6">
+                  <Icon className="w-8 h-8 md:w-10 md:h-10 text-accent" strokeWidth={2} />
                 </div>
-                <h4 className="font-sans text-xl font-bold text-white mb-4 uppercase tracking-widest">
+                <h4 className="font-sans text-lg md:text-xl font-bold text-white mb-4 uppercase tracking-widest">
                   {service.title}
                 </h4>
-                <p className="text-white/80 text-base leading-relaxed">
+                <p className="text-white/80 text-sm md:text-base leading-relaxed">
                   {service.description}
                 </p>
               </div>
